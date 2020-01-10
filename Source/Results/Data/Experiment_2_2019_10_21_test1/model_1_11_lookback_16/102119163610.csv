@@ -1,0 +1,2 @@
+round_epochs,val_loss,loss,batch_sizes,epochs,layers,losses,nodes,optimizers
+100,0.01193496497905799,0.01534696329982226,100,100,1,mean_squared_error,128,adam

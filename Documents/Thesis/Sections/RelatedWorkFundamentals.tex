@@ -1,0 +1,75 @@
+\section{Thesis Background \& Related Work}        
+The next section describes the background on Virtual Network Function placement and also describes some related works.
+All the related works contain either topics that are also contained in the master's thesis or have the same topic: predicting network traffic.
+
+\subsection{Virtual Network Function Placement}
+After applying Network Function Virtualization and the function is separated from the hardware, the question becomes: how are the VNFs distributed in the network.
+When a function is no longer bound to specific hardware, it can be placed anywhere in the network, where the necessary compute resources exist.
+A system can place a VNF wherever it is needed; for example, a firewall VNF can be started anywhere at the edge of the network as close as possible to the entry point of a request, to minimize the route the request has to travel in the network.
+The possibility of VNF placement then creates multiple problems: how many VNFs are running, where are they placed, when are they shut down and so forth.
+Algorithms like \cite{draxlerScaling}, \cite{8486320} or \cite{7335301} try to tackle these problems.
+Special algorithms are needed because the complexity of the problems increases with a bigger network.
+Combined with the fact that network traffic can change in a fraction of a second, it is not possible anymore to start and stop VNFs manually.
+Now even an algorithm that efficiently places and scales VNFs can only do so by reacting to requests.
+The input of the algorithm would change to the predicted traffic instead of the current traffic.
+That would lead to the algorithm performing the scaling and placing on future scenarios.
+This preemptive scaling and placing would lead to the improvement that all VNFs are already ready when they are needed.
+
+\subsection{Traffic Prediction}
+The topic of predicting network traffic using deep machine learning is a relatively new one, nonetheless there exist a lot of different papers on the topic.
+Using models like the Auto-Regressive Integrated Moving Average models to predict network traffic is an older topic, but multiple of the related works show that the machine learning approach can outperform the ARIMA model.
+An example of using Long Short-Term Memory models for predicting network traffic is \cite{8717800}.
+In this work, LSTMs are compared to a model using a combination of a Convolutional Neural Network and an LSTM.
+The results show that a machine learning model can accurately predict network traffic even when the input data is quite sparse.
+Of course, the prediction is not perfect but a close approximation of the reality.
+The topic of the paper is similar to the topic of this thesis, but this master's thesis goal includes the prediction of not only one straightforward traffic pattern but multiple real-world network traffic recordings.
+
+R. Vinayakumar et al. \cite{deepLearningApproaches} implement multiple machine learning models and compare their performance at predicting network traffic.
+They implement multiple Recurrent Neural Network models, including LSTMs.
+According to their results, the LSTM performs the best but with a high computational cost.
+Other models that perform well are the Gated Recurrent Unit(GRU) and Independent Recurrent Neural Network(IRNN) models, the GRU with less computational cost than the LSTM.
+They conclude that with more computation resources, they could train more complex networks and improve the results even more.
+The results enforce that LSTMs can predict network traffic, but it also shows that something to look out for is the complexity of the computations.
+
+\cite{8292737} is also using a machine learning approach to predicting network traffic, mobile traffic in this case.
+They are using a dataset that contains the mobile traffic split up into cells and arranged in a grid.
+Their RNN cells are also of the LSTM kind and they construct multiple different models including Convolutional RNN as seen in a previous paper or a 3D-RNN.
+With these models, they compare the performance at predicting \textit{call detail record} (CDR) per grid cell.
+Using the same dataset \cite{8553653} tried to predict the \textit{control plane traffic}.
+This paper also uses multiple machine learning approaches and compares the results.
+The two approaches the authors compared were a basic Neural Network and an LSTM.
+However, the LSTM performed better with fewer nodes and the same amount of data, so they used the LSTMs for their approach.
+Both of these papers show that LSTMs can recognize traffic in traffics and is able to predict it.
+
+A paper that does not use deep machine learning is \cite{mobileARIMA}.
+They used an ARIMA model to predict mobile traffic.
+The model produces good results for the traffic from the mobile cells.
+However, looking at the traffic, it has many similarities from one day to the next, but they did use two datasets: one with no daily changes in traffic and one with less traffic at the weekends.
+Here the question would be how the ARIMA model performs with traffic that changes more from one day to the next, which is the case for this master's thesis.
+However, this work shows that, in principle, the ARIMA model is well suited for time series prediction.
+This reinforces my decision to use the ARIMA model as a baseline for this thesis.
+
+\subsection{Related Topics}
+The following scientific works are related to this master thesis. They are not trying to achieve the same thing, predicting network traffic, but parts of these works can be found in this thesis.
+
+The first paper is \cite{ArimaTraffic}.
+It uses ARIMA models to simulate realistic network traffic.
+They not only simulated periodic traffic but also traffic that is linearly increasing and traffic with anomalies.
+This paper shows that the ARIMA model used in this master's thesis is a suitable model to simulate and predict network traffic.
+
+Another related paper is \cite{8486320}.
+The paper demonstrates a way of optimizing a VNF placement and scaling algorithm with prediction.
+The paper also describes that it is an online prediction.
+So the algorithm is learning at run-time and is not trained beforehand.
+The algorithm from this paper is called \textit{VNF Provisioning for Cost Minimization} and the online learning method they are using is called FTRL(Follow-the-Regularized-Leader).
+No machine learning model from this thesis appears in the paper, but the paper shows nonetheless that predicting network traffic can lead to an increase in quality of the VNF placement and scaling.
+
+The authors present a different approach to placing VNFs in \cite{7502957}.
+With this method, a particular model, model predictive control, is used, that tries to maintain a given output value.
+It makes a prediction and takes the new output to adjust its forecast for the next time-step.
+Again this paper demonstrated how predicting network traffic could improve the performance of placing VNFs.
+
+Also, a different use of machine learning in the realm of NFV and VNFs is the prediction of resource usage of VNFs.
+That is what \cite{resourceMachineLearningTechniques} tries to do.
+Machine learning is applied to predict the CPU usage of VNFs with just the network traffic as an input.
+This paper proves that a machine learning model can find patterns in network traffic that it can reliably predict, just as this master's thesis tries to do.

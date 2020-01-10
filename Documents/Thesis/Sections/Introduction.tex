@@ -1,0 +1,42 @@
+\section{Introduction}
+        Networks with Virtual Network Functions (VNF) are a heavily researched topic.        
+        In today's world, the standard way of how a network is constructed is that many network functions (e.g. firewall) have proprietary hardware.
+        As described by \cite{YI2018212}:
+        \begin{displayquote}
+            A given service usually has a strong connection with some specific middle-boxes. For example, launching a new service needs to deploy a variety of middle-boxes and to accommodate these middle-boxes is becoming more and more difficult.
+        \end{displayquote}
+        The difficulty stems from the fact that networks get larger and larger and just adding new hardware becomes more difficult.
+        So a way of using generic server hardware to deploy multiple software solutions would be desirable.
+        As noted by \cite{YI2018212}, this would lead to lower cost, higher ease of updating functions (e.g. IPv4 vs IPv6) and better maintainability.
+        This is what VNFs are for; they are meant to separate the function from the hardware.
+        That is why it is called Network Function Virtualization (NFV); the services are virtualized and run on generic hardware.
+        NFV then combines these functions to specific services that are provided by a network, e.g. video streaming.
+        Each service is a connected graph of different VNFs.
+        By creating these services, it creates the possibility to scale services if more instances of functions are needed and the NFV scaling algorithm can place the VNFs at any physical node in the network.
+        The scaling of the services makes the network more robust against changing network loads, also saves many resources when a service is not needed and needs less expensive proprietary hardware.     
+        However, one of the research subjects of NFV is the scaling of the system and where to place VNFs efficiently.
+        This scaling is determined by the traffic of each service, the more traffic a service generates the more individual instances of the services are started.
+        Furthermore, at what location in the network the traffic passes through determines where the algorithm places the instances.
+        The goal of this master's thesis is to predict the network traffic that requires the algorithm to scale the network and place new VNFs.
+        
+        However, a problem with VNFs is that they take some time to start.
+        As noted by \cite[p.108-109]{Mijumbi}:
+        \begin{quote}
+            "[...] even for a single VM, the time needed for boot and basic provisioning is in the order of tens of seconds. This time grows very quickly if a higher number of VMs is required."
+        \end{quote}
+        When a system can only react to a request and not predict it, and the system has not yet started the VNF, the time for starting the necessary software will be added to the waiting time of the request.
+        This is the worst-case scenario.
+        In a typical scenario, the VNF instance is already running but is overloaded.
+This overloading of the VNF means the request would enter a queue of this instance and wait for its processing.
+        A request in this context is meant to be a request for a specific service, and all further mentions of request mean the same thing.
+        The approach this thesis takes to handle new requests better is the prediction of those requests.
+        When a system can predict these events, it can start the service and corresponding VNFs early to compensate for its startup time.
+        Also, it can compute in advance where the best location would be to place the VNFs.
+        
+        An algorithm that handles the scaling and placement of VNFs is \cite{draxlerScaling}.       
+        The idea of this master's thesis is to rectify the problems of the reactive nature of these algorithms and provide them with accurate predictions of future traffic.
+        For this purpose, the goal is to develop and test a machine learning model that can reliably predict the incoming traffic of the service requests produced at each ingress node.
+        With these predictions, an algorithm could then not only compensate for the startup time but also shut down services earlier if no new request is arriving or keep services running if a new request is imminent to arrive.
+        The same is true for the scaling of the services.
+        The model will be a Long Short-Term Memory model and, as a comparison, I will develop an Auto-Regressive Integrated Moving Average model.
+        ARIMA models are already established for time-series prediction and are used as a baseline for the quality of the prediction.        

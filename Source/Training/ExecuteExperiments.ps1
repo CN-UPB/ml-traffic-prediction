@@ -1,0 +1,6 @@
+﻿python '.\Experiment_1_(increasing_number_of_nodes).py'
+python '.\Experiment_1_1_(increasing_number_of_nodes_epochs).py'
+python '.\Experiment_2_(increasing_look_back).py'
+python '.\Experiment_2_1_(increasing_look_back_epochs).py'
+python '.\Experiment_3_(increasing_layers).py'
+python '.\Experiment_4_(increasing_epochs_batch_sizes).py'

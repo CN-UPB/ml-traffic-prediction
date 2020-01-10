@@ -1,0 +1,21 @@
+- Deep Convolutional LSTM Network-based Traffic Matrix Prediction with Partial Information	x
+		Network traffic prediction using LSTM and Convolutional LSTM
+		
+- Traffic forecasting for mobile networks with multiplicative seasonal ARIMA models			x
+		Predicting mobile network traffic with ARIMA model
+		
+- Arima model for network traffic prediction and anomaly detection
+		Simulating network traffic using ARIMA model
+		
+- Adaptive VNF Scaling and Flow Routing with Proactive Demand Prediction
+		VNF scaling using a predictive model to predict demand (no machine learning)
+		
+- Applying deep learning approaches for network traffic prediction							x
+		Testing multiple different machine learning models for predicting netowrk traffic
+		
+- Dynamic Placement of Virtual Network Functionsbased on Model Predictive Control
+		Using a predictive model to scale and place VNFs early.
+		
+- Estimating VNF Resource RequirementsUsing Machine Learning Techniques
+		They predict how much CPU resources a VNF needs based on the network traffic.
+		

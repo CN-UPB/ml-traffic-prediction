@@ -1,0 +1,3 @@
+- Zu was hat der Algorithmus zugriff (Netzwerk Struktur)?
+- Test Methode (Simulation)?
+- 

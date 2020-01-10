@@ -1,0 +1,109 @@
+\documentclass[12pt,a4paper]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\bibliographystyle{ieeetr}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{rotating}
+\usepackage{csquotes}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{listings}  
+\usepackage{geometry}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\geometry{
+	a4paper,
+	left=35mm,
+	right=35mm
+}
+\usepackage{float}
+\usepackage{amsmath}
+\setcounter{tocdepth}{4}
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+
+\linespread{1.2}
+\begin{document}
+	\lstset{language=Python}
+	
+	\begin{titlepage}
+		\centering
+		\includegraphics[width=0.25\textwidth]{Pictures/UPB_LOGO_KOMP_RGB_GB_2015W}\par\vspace{1cm}
+		{\scshape\LARGE Paderborn University\par}
+		\vspace{1cm}
+		{\scshape\Large Master's thesis\par}
+		\vspace{1.5cm}
+		{\huge\bfseries Machine Learning-Based Load Prediction for Network Function Virtualization Scenarios\par}
+		\vspace{2cm}
+		{\Large\itshape Christoph Kaiser\par
+			Mat.:6701299\par
+			kaiserc1@mail.uni-paderborn.de}
+		\vfill
+		supervised by\par
+		Prof. Dr. Holger Karl\par
+		Prof. Dr.-Ing. Falko Dressler
+		
+		\vfill
+		
+		% Bottom of the page
+		{\large \today\par}
+	\end{titlepage}
+	
+	\pagebreak
+	\pagenumbering{roman}
+	\tableofcontents
+	\pagebreak	
+	\pagenumbering{arabic}
+	\textbf{\textit{Abstract} -
+		This master's thesis has the topic of predicting service traffic in a Network Function Virtualization scenario.
+		So, predicting multiple different traffic patterns at each ingress node in a network structure.
+		A problem with current algorithms for placing Virtual Network Functions in a network and scaling the services is that they can typically only react to arriving requests. 
+		Replacing this reactive nature with prediction capabilities could yield results for compensating startup times, shutting down services earlier and keep services running. 
+		Furthermore, the algorithm can scale the service proactively.
+		Developing a machine learning model that can reliably predict new requests and what services are called by these requests is the goal of this master thesis.
+		A big challenge of this thesis is the modelling of the available information as an input and the output for the neural networks.
+		The second big task is the modelling and training of the machine learning models.
+		The results of the machine learning model are tested against an Auto-Regressive Integrated Moving Average model, as an already established prediction method.
+		These tests show that the developed Long Short-Term Memory is not much better than an ARIMA model.
+		However, both bring their advantages and disadvantages.}
+	
+	\include{./Sections/Introduction}
+	
+	%\pagebreak
+	
+	\include{./Sections/RelatedWorkFundamentals}
+			
+	%\pagebreak
+	
+	\include{./Sections/ProblemStatement}
+	
+	%\pagebreak
+	
+	\include{./Sections/Datasets}
+
+	%\pagebreak
+	
+	\include{./Sections/Models}
+
+	%\pagebreak
+	
+	\include{./Sections/Eval}
+	
+	%\pagebreak
+	
+	\include{./Sections/Conclusion}
+	
+	%\pagebreak
+
+	\include{./Sections/Apendix}
+
+	%\pagebreak
+
+	\bibliography{thesisBib}
+	
+	\pagebreak
+	\include{./Sections/Erklaerung}
+\end{document}
