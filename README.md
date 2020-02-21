@@ -150,8 +150,9 @@ for x in range(1,6):
     LSTMpredictions.append(prediction)
 ```
 
-## Authors
+## Contributors
 
-* **Christoph Kaiser** - [GitHub](https://github.com/Kenny8215)
+* Implementation, Design: **Christoph Kaiser** - [GitHub](https://github.com/Kenny8215)
+* Advisor: Stefan Schneider - [GitHub](https://github.com/stefanbschneider)
 
 See also the list of [contributors](https://github.com/Kenny8215/Masterarbeit/contributors) who participated in this project.
